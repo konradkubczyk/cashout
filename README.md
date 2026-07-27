@@ -1,56 +1,69 @@
-# Welcome to your Expo app 👋
+# Cashout 🧾
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A digital wallet for bottle deposit coupons — scan, store, and redeem your Pfand receipts.
 
-## Get started
+## What Is This?
 
-1. Install dependencies
+In many European countries, a deposit (Pfand) system exists for bottles and cans. When you return empty containers to a collection machine at a store, the machine prints a paper coupon with a barcode. You can use this coupon at checkout to offset your purchase.
 
-   ```bash
-   npm install
-   ```
+**Cashout** digitizes this workflow. Instead of keeping crumpled paper receipts in your pocket, you scan the barcode with the app. When you're back at the store, present the barcode on-screen — the cashier scans it just like the paper original.
 
-2. Start the app
+## Tech Stack
 
-   ```bash
-   npx expo start
-   ```
+| Layer | Technology |
+|-------|-----------|
+| Runtime | [Expo SDK 57](https://docs.expo.dev/versions/v57.0.0/) (React Native 0.86) |
+| Language | TypeScript (strict mode) |
+| UI | [React Native Paper](https://callstack.github.io/react-native-paper/) (Material Design 3) |
+| Navigation | [Expo Router](https://docs.expo.dev/router/introduction/) (file-based) |
+| Local Storage | SQLite via expo-sqlite |
+| Target | Android |
 
-In the output, you'll find options to open the app in a
+## Getting Started
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Prerequisites
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- [Node.js](https://nodejs.org/) (LTS)
+- [Android Studio](https://developer.android.com/studio) with an emulator, or a physical Android device with [Expo Go](https://expo.dev/go)
 
-## Get a fresh project
-
-When you're ready, run:
+### Install & Run
 
 ```bash
-npm run reset-project
+# Install dependencies
+npm install
+
+# Start the Expo development server
+npx expo start
+
+# Run on Android emulator or device
+npm run android
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Project Structure
 
-### Other setup steps
+```
+cashout/
+├── assets/                  # Icons, splash screen, fonts
+├── docs/                    # Project documentation
+│   ├── OVERVIEW.md          # Project overview & problem statement
+│   ├── ARCHITECTURE.md      # Technical architecture
+│   ├── DATA_MODEL.md        # Database schema
+│   ├── USER_JOURNEYS.md     # User journey specifications
+│   ├── ROADMAP.md           # Feature roadmap (Phase 1–5)
+│   └── TECH_DECISIONS.md    # Architecture Decision Records
+├── src/
+│   ├── app/                 # Expo Router routes
+│   ├── components/          # Reusable UI components
+│   ├── screens/             # Screen bodies
+│   ├── db/                  # Database layer
+│   ├── hooks/               # Custom React hooks
+│   └── utils/               # Utility functions
+├── AGENTS.md                # AI agent instructions
+├── app.json                 # Expo configuration
+├── package.json
+└── tsconfig.json
+```
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Documentation
 
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Full project documentation is in the [`docs/`](./docs/) directory. See [`AGENTS.md`](./AGENTS.md) for a quick orientation.
