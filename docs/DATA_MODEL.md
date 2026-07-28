@@ -6,25 +6,25 @@ This document specifies the canonical data model for the Cashout application (a 
 
 The primary entity in the system is the **Coupon**. Below is the detailed schema specification:
 
-| Column | Type | Constraints | Description |
-|--------|------|-------------|-------------|
-| `id` | TEXT (UUID v4) | PRIMARY KEY, NOT NULL | Unique identifier, UUID for sync compatibility |
-| `barcode_value` | TEXT | NOT NULL | Raw barcode string as printed on the coupon |
-| `barcode_format` | TEXT | NOT NULL, DEFAULT 'CODE128' | Barcode symbology: EAN13, CODE128, QR, etc. |
-| `amount_cents` | INTEGER | NOT NULL | Coupon value in euro cents (e.g., 125 = €1.25) |
-| `currency` | TEXT | NOT NULL, DEFAULT 'EUR' | ISO 4217 currency code |
-| `store_name` | TEXT | NULL | Name of the issuing store |
-| `store_address` | TEXT | NULL | Address of the issuing store |
-| `store_latitude` | REAL | NULL | GPS latitude of the store (Phase 3) |
-| `store_longitude` | REAL | NULL | GPS longitude of the store (Phase 3) |
-| `status` | TEXT | NOT NULL, DEFAULT 'active' | Enum: 'active', 'redeemed', 'expired' |
-| `issued_at` | TEXT | NULL | ISO 8601 UTC, date printed on the coupon |
-| `expires_at` | TEXT | NULL | ISO 8601 UTC, expiry date from the coupon |
-| `redeemed_at` | TEXT | NULL | ISO 8601 UTC, when the user redeemed it |
-| `created_at` | TEXT | NOT NULL, DEFAULT CURRENT_TIMESTAMP | ISO 8601 UTC, when the record was created in the app |
-| `updated_at` | TEXT | NOT NULL, DEFAULT CURRENT_TIMESTAMP | ISO 8601 UTC, last modification time |
-| `synced_at` | TEXT | NULL | ISO 8601 UTC, last cloud sync time (Phase 2) |
-| `notes` | TEXT | NULL | Free-text user notes |
+| Column            | Type           | Constraints                         | Description                                          |
+| ----------------- | -------------- | ----------------------------------- | ---------------------------------------------------- |
+| `id`              | TEXT (UUID v4) | PRIMARY KEY, NOT NULL               | Unique identifier, UUID for sync compatibility       |
+| `barcode_value`   | TEXT           | NOT NULL                            | Raw barcode string as printed on the coupon          |
+| `barcode_format`  | TEXT           | NOT NULL, DEFAULT 'CODE128'         | Barcode symbology: EAN13, CODE128, QR, etc.          |
+| `amount_cents`    | INTEGER        | NOT NULL                            | Coupon value in euro cents (e.g., 125 = €1.25)       |
+| `currency`        | TEXT           | NOT NULL, DEFAULT 'EUR'             | ISO 4217 currency code                               |
+| `store_name`      | TEXT           | NULL                                | Name of the issuing store                            |
+| `store_address`   | TEXT           | NULL                                | Address of the issuing store                         |
+| `store_latitude`  | REAL           | NULL                                | GPS latitude of the store (Phase 3)                  |
+| `store_longitude` | REAL           | NULL                                | GPS longitude of the store (Phase 3)                 |
+| `status`          | TEXT           | NOT NULL, DEFAULT 'active'          | Enum: 'active', 'redeemed', 'expired'                |
+| `issued_at`       | TEXT           | NULL                                | ISO 8601 UTC, date printed on the coupon             |
+| `expires_at`      | TEXT           | NULL                                | ISO 8601 UTC, expiry date from the coupon            |
+| `redeemed_at`     | TEXT           | NULL                                | ISO 8601 UTC, when the user redeemed it              |
+| `created_at`      | TEXT           | NOT NULL, DEFAULT CURRENT_TIMESTAMP | ISO 8601 UTC, when the record was created in the app |
+| `updated_at`      | TEXT           | NOT NULL, DEFAULT CURRENT_TIMESTAMP | ISO 8601 UTC, last modification time                 |
+| `synced_at`       | TEXT           | NULL                                | ISO 8601 UTC, last cloud sync time (Phase 2)         |
+| `notes`           | TEXT           | NULL                                | Free-text user notes                                 |
 
 ## Design Decisions
 

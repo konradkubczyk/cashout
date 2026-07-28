@@ -11,7 +11,7 @@
 
 ## Problem Statement
 
-In many European countries (such as Germany, the Netherlands, and Scandinavia), a bottle deposit (*Pfand* / *pant*) system is widely established. When consumers return empty bottles, cans, and crates to collection machines in grocery stores and supermarkets, the machine prints a paper receipt/coupon containing a barcode and monetary deposit refund amount.
+In many European countries (such as Germany, the Netherlands, and Scandinavia), a bottle deposit (_Pfand_ / _pant_) system is widely established. When consumers return empty bottles, cans, and crates to collection machines in grocery stores and supermarkets, the machine prints a paper receipt/coupon containing a barcode and monetary deposit refund amount.
 
 This paper coupon is intended to be redeemed at the store's checkout counter to offset the total purchase price. However, several pain points exist with the current physical paper workflow:
 
@@ -34,12 +34,12 @@ This paper coupon is intended to be redeemed at the store's checkout counter to 
 
 ## Tech Stack Summary
 
-| Layer | Technology / Library | Details & Notes |
-| :--- | :--- | :--- |
-| **Runtime / Core** | **Expo SDK 57** (React Native 0.86) | Modern Expo ecosystem targeting Android & iOS |
-| **Language** | **TypeScript** | Strict mode enabled across the codebase |
-| **UI Framework** | **React Native Paper** | Material Design 3 UI components, themes (light/dark mode) |
-| **Navigation** | **Expo Router** | File-based, typed routing system |
-| **Local Storage** | **`expo-sqlite`** | Local SQLite database for offline persistence (MVP) |
-| **Barcode Scanning** | **`expo-camera`** | Fast and accurate camera scanning for paper coupons |
-| **State Management** | **React Context + Hooks** | Lightweight state for MVP; migration to Zustand evaluated for Phase 2+ |
+| Layer                | Technology / Library                | Details & Notes                                                        |
+| :------------------- | :---------------------------------- | :--------------------------------------------------------------------- |
+| **Runtime / Core**   | **Expo SDK 57** (React Native 0.86) | Modern Expo ecosystem targeting Android & iOS                          |
+| **Language**         | **TypeScript**                      | Strict mode enabled across the codebase                                |
+| **UI Framework**     | **React Native Paper**              | Material Design 3 UI components, themes (light/dark mode)              |
+| **Navigation**       | **Expo Router**                     | File-based, typed routing system                                       |
+| **Local Storage**    | **`expo-sqlite`**                   | Local SQLite database for offline persistence (MVP)                    |
+| **Barcode Scanning** | **`expo-camera`**                   | Fast and accurate camera scanning for paper coupons                    |
+| **State Management** | **React Context + Hooks**           | Lightweight state for MVP; migration to Zustand evaluated for Phase 2+ |

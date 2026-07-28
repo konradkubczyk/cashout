@@ -49,7 +49,12 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "test": "jest --watchAll"
+    "format:check": "prettier . --check",
+    "format:write": "prettier . --write",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "preset": "jest-expo",
+    "typecheck": "tsc --noEmit"
   },
   "jest": {
     "preset": "jest-expo"
