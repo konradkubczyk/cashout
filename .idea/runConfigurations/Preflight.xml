@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Preflight" type="CompoundRunConfigurationType">
+    <toRun name="format:check" type="js.build_tools.npm" />
+    <toRun name="lint" type="js.build_tools.npm" />
+    <toRun name="test" type="js.build_tools.npm" />
+    <toRun name="typecheck" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>
