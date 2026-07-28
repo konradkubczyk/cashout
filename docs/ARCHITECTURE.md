@@ -1,9 +1,11 @@
 # Cashout — System Architecture Documentation
 
 ## Overview
+
 Cashout is an Android mobile application built with **React Native** and **Expo SDK 57**. It serves as a digital wallet for bottle deposit coupons, allowing users to scan, store, view, and redeem physical coupon barcodes.
 
 ### Core Tech Stack
+
 - **Framework:** React Native / Expo SDK 57 (Android target)
 - **Routing & Navigation:** Expo Router (file-based routing)
 - **UI Library:** React Native Paper (Material Design 3)
@@ -59,14 +61,14 @@ cashout/
 
 ### Directory Responsibilities
 
-| Directory | Purpose | Key Rules |
-| :--- | :--- | :--- |
-| `src/app/` | Expo Router route definitions | Thin wrappers only. Must delegate UI to `src/screens/`. |
-| `src/screens/` | Full-page screen components | Contains screen-specific layout, state orchestration, and sub-components. |
-| `src/components/` | Reusable UI components | Modular components (cards, barcode renderers, empty states). |
-| `src/db/` | Data persistence & SQLite | Schema definitions, database connection singleton, repository implementation. |
-| `src/hooks/` | Custom React hooks | Encapsulates async data fetching, DB interactions, and screen state logic. |
-| `src/utils/` | Utility functions | Pure, side-effect-free helper modules accompanied by unit tests (`*.test.ts`). |
+| Directory         | Purpose                       | Key Rules                                                                      |
+| :---------------- | :---------------------------- | :----------------------------------------------------------------------------- |
+| `src/app/`        | Expo Router route definitions | Thin wrappers only. Must delegate UI to `src/screens/`.                        |
+| `src/screens/`    | Full-page screen components   | Contains screen-specific layout, state orchestration, and sub-components.      |
+| `src/components/` | Reusable UI components        | Modular components (cards, barcode renderers, empty states).                   |
+| `src/db/`         | Data persistence & SQLite     | Schema definitions, database connection singleton, repository implementation.  |
+| `src/hooks/`      | Custom React hooks            | Encapsulates async data fetching, DB interactions, and screen state logic.     |
+| `src/utils/`      | Utility functions             | Pure, side-effect-free helper modules accompanied by unit tests (`*.test.ts`). |
 
 ---
 
@@ -76,14 +78,15 @@ Navigation is managed by **Expo Router** using file-based routing. The root stru
 
 ### Route Mapping
 
-| Route Path | File Location | Screen Component | Parameters | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| `/` | `src/app/index.tsx` | `HomeScreen` | None | Main dashboard displaying active and redeemed coupon list. |
-| `/scan` | `src/app/scan.tsx` | `ScanScreen` | None | Camera-based barcode scanner for auto-detecting coupon details. |
-| `/add` | `src/app/add.tsx` | `AddCouponScreen` | `barcodeValue?` | Manual entry form for creating/editing coupons. |
+| Route Path     | File Location             | Screen Component     | Parameters         | Description                                                                  |
+| :------------- | :------------------------ | :------------------- | :----------------- | :--------------------------------------------------------------------------- |
+| `/`            | `src/app/index.tsx`       | `HomeScreen`         | None               | Main dashboard displaying active and redeemed coupon list.                   |
+| `/scan`        | `src/app/scan.tsx`        | `ScanScreen`         | None               | Camera-based barcode scanner for auto-detecting coupon details.              |
+| `/add`         | `src/app/add.tsx`         | `AddCouponScreen`    | `barcodeValue?`    | Manual entry form for creating/editing coupons.                              |
 | `/coupon/[id]` | `src/app/coupon/[id].tsx` | `CouponDetailScreen` | `id` (string/UUID) | Detailed coupon view featuring full-screen display of the generated barcode. |
 
 ### Deep Linking
+
 - **Scheme:** `cashout://` (configured in `app.json`)
 - **Example Deep Links:**
   - `cashout://` -> Opens Home screen
@@ -146,6 +149,7 @@ sequenceDiagram
 ```
 
 ### Future PostgreSQL / Cloud Sync Compatibility
+
 - Primary keys are generated as **UUID v4** strings on the client.
 - All timestamps are stored as **ISO 8601 UTC strings** (`YYYY-MM-DDTHH:mm:ss.sssZ`).
 - Table columns and types mirror relational structures compatible with PostgreSQL / Supabase migration (see [`DATA_MODEL.md`](file:///c:/Users/konra/Repozytoria/cashout/docs/DATA_MODEL.md)).
@@ -180,6 +184,7 @@ export default function RootLayout() {
 ```
 
 ### Component Guidelines
+
 - **Custom UI Components:** Reside in `src/components/`. Built by composition using React Native Paper primitives (`Card`, `Text`, `Button`, `Surface`, `FAB`).
 - **Styling:** Colocated inside component files using `StyleSheet.create()`. Hardcoded color literals are prohibited; design tokens from React Native Paper `useTheme()` must be utilized.
 
@@ -188,18 +193,23 @@ export default function RootLayout() {
 ## Key Conventions
 
 ### 1. File & Directory Naming
+
 - Use **kebab-case** for all file names and directories (e.g., `coupon-card.tsx`, `use-coupons.ts`, `coupon-repository.ts`).
 
 ### 2. Export Standard
+
 - Use **one named export per file** for components, hooks, and utilities (e.g., `export const CouponCard = ...`).
 - Route files in `src/app/` use `export default` as required by Expo Router conventions.
 
 ### 3. Separation of Concerns (Thin Routes)
+
 - Route files inside `src/app/` are strict entry points. They render top-level container screens from `src/screens/` and do not contain complex inline UI logic.
 
 ### 4. Unit Testing Standard
+
 - Test files are colocated next to their target source files using the `*.test.ts` or `*.test.tsx` naming convention (e.g., `src/utils/barcode.ts` -> `src/utils/barcode.test.ts`).
 
 ### 5. Data Standards
+
 - **Dates:** Stored and passed strictly as ISO 8601 UTC strings (`YYYY-MM-DDTHH:mm:ss.sssZ`).
 - **Primary Keys:** UUID v4 string generation for all persistent entities to ensure offline-first safety and seamless cloud sync.
