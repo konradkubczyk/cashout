@@ -12,28 +12,28 @@ Read the exact versioned docs at https://docs.expo.dev/versions/v57.0.0/ before 
 
 ## Tech Stack
 
-| Layer | Technology | Version |
-|-------|-----------|---------|
-| Runtime | Expo SDK | 57 |
-| Framework | React Native | 0.86 |
-| Language | TypeScript | strict mode |
-| UI Library | React Native Paper | 5.x (Material Design 3) |
-| Navigation | Expo Router | 57 (file-based, typed routes) |
-| Local Storage | expo-sqlite | (planned) |
-| Barcode Scanning | expo-camera | (planned) |
+| Layer            | Technology         | Version                       |
+| ---------------- | ------------------ | ----------------------------- |
+| Runtime          | Expo SDK           | 57                            |
+| Framework        | React Native       | 0.86                          |
+| Language         | TypeScript         | strict mode                   |
+| UI Library       | React Native Paper | 5.x (Material Design 3)       |
+| Navigation       | Expo Router        | 57 (file-based, typed routes) |
+| Local Storage    | expo-sqlite        | (planned)                     |
+| Barcode Scanning | expo-camera        | (planned)                     |
 
 ## Project Documentation
 
 All structured project documentation lives in `docs/`. Read these files to understand the project before making changes:
 
-| File | Purpose |
-|------|---------|
-| `docs/OVERVIEW.md` | High-level project overview, problem statement, solution |
-| `docs/ARCHITECTURE.md` | Folder structure, navigation, data layer, UI architecture |
-| `docs/DATA_MODEL.md` | Canonical data model, Coupon table schema, SQL DDL |
-| `docs/USER_JOURNEYS.md` | Detailed user journey specifications for MVP features |
-| `docs/ROADMAP.md` | Phased feature roadmap (Phase 1–5) with architectural implications |
-| `docs/TECH_DECISIONS.md` | Architecture Decision Records (ADRs) |
+| File                     | Purpose                                                            |
+| ------------------------ | ------------------------------------------------------------------ |
+| `docs/OVERVIEW.md`       | High-level project overview, problem statement, solution           |
+| `docs/ARCHITECTURE.md`   | Folder structure, navigation, data layer, UI architecture          |
+| `docs/DATA_MODEL.md`     | Canonical data model, Coupon table schema, SQL DDL                 |
+| `docs/USER_JOURNEYS.md`  | Detailed user journey specifications for MVP features              |
+| `docs/ROADMAP.md`        | Phased feature roadmap (Phase 1–5) with architectural implications |
+| `docs/TECH_DECISIONS.md` | Architecture Decision Records (ADRs)                               |
 
 ## Key Conventions
 
@@ -42,7 +42,7 @@ All structured project documentation lives in `docs/`. Read these files to under
 - **Route files are thin**: they delegate rendering to screen components in `src/screens/`.
 - **One named export per component file**.
 - **Styles**: colocated via `StyleSheet.create()` at the bottom of the component file.
-- **Tests**: colocated next to source files (`*.test.ts` or `*.test.tsx`). You MUST write basic unit tests for any new features, screens, or components you create. Use `@testing-library/react-native` for components and screen tests.
+- **Tests**: placed in the `__tests__/` directory at the root of the project (e.g. `__tests__/app/index.test.tsx`). You MUST write basic unit tests for any new features, screens, or components you create. Use `@testing-library/react-native` for components and screen tests.
 - **Dates**: ISO 8601 UTC strings everywhere.
 - **IDs**: UUID v4 (for future cloud sync compatibility).
 - **Money**: integer cents (`amount_cents`), never floats.

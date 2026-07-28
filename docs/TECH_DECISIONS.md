@@ -5,6 +5,7 @@
 **Status**: Accepted  
 **Date**: 2025-07-27  
 **Context**:
+
 - The app needs to store structured coupon data locally
 - Options considered: AsyncStorage (key-value), MMKV (key-value), SQLite (relational), WatermelonDB (reactive SQLite ORM)
 - Data is inherently relational (coupons with typed fields, status enum, dates)
@@ -13,6 +14,7 @@
 **Decision**: Use expo-sqlite for local storage
 
 **Consequences**:
+
 - (+) SQL schema maps directly to PostgreSQL for future cloud sync
 - (+) Efficient querying: filter by status, sort by expiry, search by store
 - (+) expo-sqlite is a built-in Expo module — no native linking or config plugins needed
@@ -25,6 +27,7 @@
 **Status**: Accepted  
 **Date**: 2025-07-27  
 **Context**:
+
 - Need a mature component library for Android-focused Material Design UI
 - Options considered: React Native Paper, NativeBase, Tamagui, Gluestack, raw RN components
 - App targets Android primarily, where Material Design is the native design language
@@ -32,6 +35,7 @@
 **Decision**: Use React Native Paper (v5, Material Design 3)
 
 **Consequences**:
+
 - (+) Material Design 3 (Material You) theming with dynamic colors
 - (+) Mature, well-documented library with active maintenance
 - (+) Rich component set (FAB, Cards, Lists, Dialogs, Snackbars) matching the app's needs
@@ -45,6 +49,7 @@
 **Status**: Accepted  
 **Date**: 2025-07-27  
 **Context**:
+
 - App needs to scan barcodes from paper deposit coupons
 - Common barcode formats: EAN-13, Code128, Code39, QR
 - Options considered: expo-camera (built-in barcode scanning), react-native-vision-camera, expo-barcode-scanner (deprecated)
@@ -52,6 +57,7 @@
 **Decision**: Use expo-camera with its built-in barcode scanning capabilities
 
 **Consequences**:
+
 - (+) First-party Expo module — zero config, managed workflow compatible
 - (+) Supports all common barcode formats (EAN-13, Code128, QR, etc.)
 - (+) No additional native dependencies
@@ -63,6 +69,7 @@
 **Status**: Accepted  
 **Date**: 2025-07-27  
 **Context**:
+
 - Need navigation library for screen management
 - Options: Expo Router (file-based), React Navigation (imperative), React Native Navigation (native)
 - Future plan: deep links for shareable coupon URLs (Phase 5)
@@ -70,6 +77,7 @@
 **Decision**: Use Expo Router (file-based routing, already set up in the project)
 
 **Consequences**:
+
 - (+) File-based routing reduces boilerplate
 - (+) Built-in deep link support via scheme configuration (cashout://)
 - (+) Typed routes enabled (experiments.typedRoutes in app.json)
@@ -83,6 +91,7 @@
 **Status**: Accepted  
 **Date**: 2025-07-27  
 **Context**:
+
 - Bottle deposit (Pfand) systems are most common in Germany, Netherlands, Scandinavia
 - In these markets, Android holds 60-75% market share
 - Resource constraints favor focusing on one platform initially
@@ -91,6 +100,7 @@
 **Decision**: Target Android as the primary platform for MVP
 
 **Consequences**:
+
 - (+) Focus development and testing effort on the dominant platform
 - (+) Material Design (React Native Paper) is the native Android design language
 - (+) Can add iOS support later with minimal code changes (Expo is cross-platform)
@@ -102,6 +112,7 @@
 **Status**: Accepted  
 **Date**: 2025-07-27  
 **Context**:
+
 - Coupon amounts need to be stored and displayed accurately
 - Floating-point arithmetic has precision issues (0.1 + 0.2 ≠ 0.3)
 - Options: float, decimal string, integer cents
@@ -109,6 +120,7 @@
 **Decision**: Store amounts as integer cents (e.g., €1.25 → 125)
 
 **Consequences**:
+
 - (+) No floating-point precision issues
 - (+) Simple integer arithmetic for totals
 - (+) Standard practice in financial software
