@@ -38,7 +38,7 @@ This paper coupon is intended to be redeemed at the store's checkout counter to 
 | :------------------- | :---------------------------------- | :--------------------------------------------------------------------- |
 | **Runtime / Core**   | **Expo SDK 57** (React Native 0.86) | Modern Expo ecosystem targeting Android & iOS                          |
 | **Language**         | **TypeScript**                      | Strict mode enabled across the codebase                                |
-| **UI Framework**     | **React Native Paper**              | Material Design 3 UI components, themes (light/dark mode)              |
+| **UI Framework**     | **Expo UI**                         | Native Jetpack Compose components on Android                           |
 | **Navigation**       | **Expo Router**                     | File-based, typed routing system                                       |
 | **Local Storage**    | **`expo-sqlite`**                   | Local SQLite database for offline persistence (MVP)                    |
 | **Barcode Scanning** | **`expo-camera`**                   | Fast and accurate camera scanning for paper coupons                    |

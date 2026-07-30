@@ -12,15 +12,15 @@ Read the exact versioned docs at https://docs.expo.dev/versions/v57.0.0/ before 
 
 ## Tech Stack
 
-| Layer            | Technology         | Version                       |
-| ---------------- | ------------------ | ----------------------------- |
-| Runtime          | Expo SDK           | 57                            |
-| Framework        | React Native       | 0.86                          |
-| Language         | TypeScript         | strict mode                   |
-| UI Library       | React Native Paper | 5.x (Material Design 3)       |
-| Navigation       | Expo Router        | 57 (file-based, typed routes) |
-| Local Storage    | expo-sqlite        | (planned)                     |
-| Barcode Scanning | expo-camera        | (planned)                     |
+| Layer            | Technology   | Version                           |
+| ---------------- | ------------ | --------------------------------- |
+| Runtime          | Expo SDK     | 57                                |
+| Framework        | React Native | 0.86                              |
+| Language         | TypeScript   | strict mode                       |
+| UI Library       | Expo UI      | 57.x (Jetpack Compose on Android) |
+| Navigation       | Expo Router  | 57 (file-based, typed routes)     |
+| Local Storage    | expo-sqlite  | (planned)                         |
+| Barcode Scanning | expo-camera  | (planned)                         |
 
 ## Project Documentation
 
@@ -50,7 +50,7 @@ All structured project documentation lives in `docs/`. Read these files to under
 
 ## Current State
 
-The project is freshly scaffolded from `create-expo-app`. The `src/app/` directory has a minimal root layout and index route. React Native Paper is installed but not yet integrated into the layout. No application features have been implemented yet.
+The project is freshly scaffolded from `create-expo-app`. The `src/app/` directory has a minimal root layout and an Expo UI-based index route. No application features have been implemented yet.
 
 ## What NOT To Do
 
