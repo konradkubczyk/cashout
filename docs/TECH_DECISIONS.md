@@ -22,27 +22,28 @@
 - (-) More setup than AsyncStorage — need schema definition, repository layer
 - (-) No reactive queries out of the box (unlike WatermelonDB) — need manual invalidation
 
-## ADR-002: React Native Paper as UI Library
+## ADR-002: Expo UI as the Android UI Library
 
 **Status**: Accepted  
-**Date**: 2025-07-27  
+**Date**: 2026-07-30
+
 **Context**:
 
-- Need a mature component library for Android-focused Material Design UI
-- Options considered: React Native Paper, NativeBase, Tamagui, Gluestack, raw RN components
-- App targets Android primarily, where Material Design is the native design language
+- Need native Android components for an Android-focused Material Design UI
+- Options considered: Expo UI, React Native Paper, NativeBase, Tamagui, Gluestack, raw React Native components
+- App targets Android primarily, where Jetpack Compose is the native UI toolkit
 
-**Decision**: Use React Native Paper (v5, Material Design 3)
+**Decision**: Use Expo UI universal components, which render as Jetpack Compose on Android. Use the Android-specific Expo UI layer only when the universal component API does not meet a requirement.
 
 **Consequences**:
 
-- (+) Material Design 3 (Material You) theming with dynamic colors
-- (+) Mature, well-documented library with active maintenance
-- (+) Rich component set (FAB, Cards, Lists, Dialogs, Snackbars) matching the app's needs
-- (+) Built-in dark mode support
-- (+) Already installed in the project (v5.15.3)
+- (+) Uses real native Jetpack Compose components on Android
+- (+) Host can derive a Material 3 palette from a seed color
+- (+) Universal components keep the option of supporting other platforms later without requiring it today
+- (+) Android-specific Compose primitives are available when a universal component is insufficient
 - (-) Opinionated styling — custom designs require theme overrides
-- (-) Some components may not feel native on iOS (acceptable since Android is primary target)
+- (-) Every Expo UI tree requires a Host wrapper
+- (-) The Android-specific Compose layer must remain isolated from iOS code if iOS support is added
 
 ## ADR-003: expo-camera for Barcode Scanning
 
@@ -102,7 +103,7 @@
 **Consequences**:
 
 - (+) Focus development and testing effort on the dominant platform
-- (+) Material Design (React Native Paper) is the native Android design language
+- (+) Material Design 3 through Jetpack Compose is the native Android design language
 - (+) Can add iOS support later with minimal code changes (Expo is cross-platform)
 - (-) iOS users excluded from MVP
 - (-) May need to adjust some UI patterns when adding iOS support (e.g., platform-specific navigation patterns)

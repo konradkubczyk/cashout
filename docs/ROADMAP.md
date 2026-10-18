@@ -17,7 +17,7 @@ This document outlines the phased feature development roadmap for the **Cashout*
 - **Redemption View**: Dedicated coupon detail view featuring a bright, full-screen barcode display ready for cashier scanning.
 - **Status & Lifecycle**: Ability to mark coupons as redeemed or delete them from the wallet.
 - **Offline Data Persistence**: Embedded SQLite database (`expo-sqlite`) ensuring full offline functionality.
-- **Material Design 3 UI**: Clean user interface built with React Native Paper, supporting dark and light themes seamlessly.
+- **Material Design 3 UI**: Clean Android interface built with Expo UI and native Jetpack Compose components.
 
 ### Architectural Notes (Phase 1 Groundwork)
 

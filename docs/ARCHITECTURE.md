@@ -8,7 +8,7 @@ Cashout is an Android mobile application built with **React Native** and **Expo 
 
 - **Framework:** React Native / Expo SDK 57 (Android target)
 - **Routing & Navigation:** Expo Router (file-based routing)
-- **UI Library:** React Native Paper (Material Design 3)
+- **UI Library:** Expo UI (native Jetpack Compose on Android)
 - **Local Persistence:** `expo-sqlite` (SQLite database with Repository pattern)
 - **Path Aliasing:** `@/*` mapped to `./src/*`
 
@@ -25,7 +25,7 @@ cashout/
 ├── scripts/                       # Build and utility scripts
 ├── src/
 │   ├── app/                       # Expo Router routes ONLY
-│   │   ├── _layout.tsx            # Root layout (PaperProvider, theme)
+│   │   ├── _layout.tsx            # Root Expo Router stack layout
 │   │   ├── index.tsx              # Home — coupon list
 │   │   ├── scan.tsx               # Barcode scanner
 │   │   ├── add.tsx                # Manual coupon entry form
@@ -53,7 +53,6 @@ cashout/
 │   │   ├── barcode.ts             # Barcode validation, formatting
 │   │   └── date.ts                # Date formatting, expiry checks
 │   ├── constants.ts               # App-wide constants
-│   └── theme.ts                   # React Native Paper theme config
 ├── app.json                       # Expo config
 ├── package.json
 └── tsconfig.json
@@ -158,35 +157,31 @@ sequenceDiagram
 
 ## UI Architecture
 
-The UI is built on **React Native Paper** (Material Design 3 framework).
+The UI is built with **Expo UI**. Its universal components render through native Jetpack Compose on Android and each Expo UI subtree is wrapped in a `Host`.
 
 ### Configuration & Theme
 
-- **Root Provider:** `PaperProvider` wraps the application inside `src/app/_layout.tsx`.
-- **Dynamic Theming:** Configured in `src/theme.ts`. Automatically responds to system color schemes (light and dark mode) via React Native's `useColorScheme`.
+- **Native host:** Each screen or component tree that uses Expo UI is wrapped in `Host` from `@expo/ui`.
+- **Android theme:** A `Host` can provide a `seedColor`, which derives a native Material 3 palette on Android. If omitted, Android's default theme is used.
 
 ```typescript
-// Example theme integration flow
-import { MD3LightTheme, MD3DarkTheme, PaperProvider } from 'react-native-paper';
-import { useColorScheme } from 'react-native';
-import { AppTheme } from '@/theme';
+import { Column, Host, Text } from '@expo/ui';
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const theme = colorScheme === 'dark' ? AppTheme.dark : AppTheme.light;
-
+export function WalletContent() {
   return (
-    <PaperProvider theme={theme}>
-      <Stack />
-    </PaperProvider>
+    <Host style={{ flex: 1 }} seedColor="#208AEF">
+      <Column style={{ padding: 24 }}>
+        <Text>My coupons</Text>
+      </Column>
+    </Host>
   );
 }
 ```
 
 ### Component Guidelines
 
-- **Custom UI Components:** Reside in `src/components/`. Built by composition using React Native Paper primitives (`Card`, `Text`, `Button`, `Surface`, `FAB`).
-- **Styling:** Colocated inside component files using `StyleSheet.create()`. Hardcoded color literals are prohibited; design tokens from React Native Paper `useTheme()` must be utilized.
+- **Custom UI Components:** Reside in `src/components/`. Build them with Expo UI primitives (`Host`, `Column`, `Text`, `Button`, and `List`) before dropping to Android-specific Compose components.
+- **Styling:** Colocate styles inside component files. Use Expo UI's supported `style` props and `Host`-provided native Material 3 theme instead of a Paper theme object.
 
 ---
 

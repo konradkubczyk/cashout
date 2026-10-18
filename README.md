@@ -10,14 +10,14 @@ In many European countries, a deposit (Pfand) system exists for bottles and cans
 
 ## Tech Stack
 
-| Layer         | Technology                                                                                |
-| ------------- | ----------------------------------------------------------------------------------------- |
-| Runtime       | [Expo SDK 57](https://docs.expo.dev/versions/v57.0.0/) (React Native 0.86)                |
-| Language      | TypeScript (strict mode)                                                                  |
-| UI            | [React Native Paper](https://callstack.github.io/react-native-paper/) (Material Design 3) |
-| Navigation    | [Expo Router](https://docs.expo.dev/router/introduction/) (file-based)                    |
-| Local Storage | SQLite via expo-sqlite                                                                    |
-| Target        | Android                                                                                   |
+| Layer         | Technology                                                                                    |
+| ------------- | --------------------------------------------------------------------------------------------- |
+| Runtime       | [Expo SDK 57](https://docs.expo.dev/versions/v57.0.0/) (React Native 0.86)                    |
+| Language      | TypeScript (strict mode)                                                                      |
+| UI            | [Expo UI](https://docs.expo.dev/versions/v57.0.0/sdk/ui/) (native Jetpack Compose on Android) |
+| Navigation    | [Expo Router](https://docs.expo.dev/router/introduction/) (file-based)                        |
+| Local Storage | SQLite via expo-sqlite                                                                        |
+| Target        | Android                                                                                       |
 
 ## Getting Started
 
